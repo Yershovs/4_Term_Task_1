@@ -1,0 +1,31 @@
+# Компилятор и флаги
+CXX = g++
+CXXFLAGS = -std=c++11 -Wall -Wextra
+LDFLAGS = -lws2_32  # Для Winsock2 на Windows
+
+# Исходные файлы и цели
+CLIENT_SOURCES = client.cpp convex_hull.h
+SERVER_SOURCES = server.cpp convex_hull.h
+MASS_TEST_SOURCES = mass_test.cpp convex_hull.h
+
+EXECUTABLES = client.exe server.exe mass_test.exe
+
+all: $(EXECUTABLES)
+
+# Сборка клиента
+client.exe: $(CLIENT_SOURCES)
+	$(CXX) $(CXXFLAGS) client.cpp -o client.exe $(LDFLAGS)
+
+# Сборка сервера
+server.exe: $(SERVER_SOURCES)
+	$(CXX) $(CXXFLAGS) server.cpp -o server.exe $(LDFLAGS)
+
+# Сборка массового теста
+mass_test.exe: $(MASS_TEST_SOURCES)
+	$(CXX) $(CXXFLAGS) mass_test.cpp -o mass_test.exe $(LDFLAGS)
+
+# Очистка
+clean:
+	del /f $(EXECUTABLES) 2> nul || true
+
+.PHONY: all clean
