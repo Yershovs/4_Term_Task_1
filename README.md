@@ -20,9 +20,9 @@
 ## Сборка и запуск
 
 1. Скомпилируйте сервер и клиент:
-  g++ server.cpp -o server -lws2_32
-  g++ client.cpp -o client -lws2_32
-  g++ mass_test.cpp -o mass_test -lws2_32
+g++ server.cpp -o server -lws2_32
+g++ client.cpp -o client -lws2_32
+g++ mass_test.cpp -o mass_test -lws2_32
 2. Запустите сервер:
   .\server.exe
 3. В отдельном терминале запустите клиент:
