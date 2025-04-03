@@ -1,0 +1,153 @@
+\doxysection{4\+\_\+\+Term\+\_\+\+Task\+\_\+1/mass\+\_\+test.cpp File Reference}
+\hypertarget{mass__test_8cpp}{}\label{mass__test_8cpp}\index{4\_Term\_Task\_1/mass\_test.cpp@{4\_Term\_Task\_1/mass\_test.cpp}}
+
+
+Массовое тестирование сервера выпуклой оболочки  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$winsock2.\+h$>$}\newline
+{\ttfamily \#include $<$ws2tcpip.\+h$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$random$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+set$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include "{}convex\+\_\+hull.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_point_hash}{Point\+Hash}}
+\item 
+struct \mbox{\hyperlink{struct_point_equal}{Point\+Equal}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{mass__test_8cpp_a614217d263be1fb1a5f76e2ff7be19a2}\label{mass__test_8cpp_a614217d263be1fb1a5f76e2ff7be19a2} 
+\#define {\bfseries PORT}~8080
+\item 
+\Hypertarget{mass__test_8cpp_a6b20d41d6252e9871430c242cb1a56e7}\label{mass__test_8cpp_a6b20d41d6252e9871430c242cb1a56e7} 
+\#define {\bfseries BUFFER\+\_\+\+SIZE}~1024
+\item 
+\Hypertarget{mass__test_8cpp_a255a33e35115a516730b5425b551d850}\label{mass__test_8cpp_a255a33e35115a516730b5425b551d850} 
+\#define {\bfseries NUM\+\_\+\+CLIENTS}~100
+\item 
+\Hypertarget{mass__test_8cpp_a9aaf2f71f34063f7082107665041e365}\label{mass__test_8cpp_a9aaf2f71f34063f7082107665041e365} 
+\#define {\bfseries POINTS\+\_\+\+PER\+\_\+\+TEST}~1000
+\item 
+\Hypertarget{mass__test_8cpp_a23f67ede912654c6b2a4a613e84b80be}\label{mass__test_8cpp_a23f67ede912654c6b2a4a613e84b80be} 
+\#define {\bfseries TEST\+\_\+\+LOG\+\_\+\+FILE}~"{}tests.\+log"{}
+\item 
+\Hypertarget{mass__test_8cpp_a6c95813cb1a88861d5629a89b16daff5}\label{mass__test_8cpp_a6c95813cb1a88861d5629a89b16daff5} 
+\#define {\bfseries MIN\+\_\+\+COORD}~-\/1000
+\item 
+\Hypertarget{mass__test_8cpp_a04fee0c711dd7fbb8253ff0120cdf28d}\label{mass__test_8cpp_a04fee0c711dd7fbb8253ff0120cdf28d} 
+\#define {\bfseries MAX\+\_\+\+COORD}~1000
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{mass__test_8cpp_aad482870673ecf4919f04a133c8ceec3}\label{mass__test_8cpp_aad482870673ecf4919f04a133c8ceec3} 
+using {\bfseries Point\+Set} = std\+::unordered\+\_\+set$<$\mbox{\hyperlink{struct_point}{Point}}, \mbox{\hyperlink{struct_point_hash}{Point\+Hash}}, \mbox{\hyperlink{struct_point_equal}{Point\+Equal}}$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \mbox{\hyperlink{mass__test_8cpp_a7882643761339acf06494ae299cb954d}{generate\+Unique\+Points}} (int count, std\+::mt19937 \&gen, std\+::uniform\+\_\+int\+\_\+distribution$<$$>$ \&dist)
+\begin{DoxyCompactList}\small\item\em Генерирует уникальные точки \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{mass__test_8cpp_a1ef65a02c6b53722cfd07662e6b1935f}{points\+To\+String}} (const std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \&points)
+\begin{DoxyCompactList}\small\item\em Конвертирует точки в строку \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mass__test_8cpp_a9fe71e0ebe9bf2f8b0a3baf62fcdeca1}{save\+Test\+To\+File}} (const std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \&points, const std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \&hull)
+\begin{DoxyCompactList}\small\item\em Сохраняет тест в файл \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{mass__test_8cpp_a3be19f7708fe2c9131609693434eef95}{test\+Client}} (const std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \&test\+Points, int client\+Id)
+\begin{DoxyCompactList}\small\item\em Выполняет тестовый запрос \end{DoxyCompactList}\item 
+\Hypertarget{mass__test_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{mass__test_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int {\bfseries main} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Массовое тестирование сервера выпуклой оболочки 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{mass__test_8cpp_a7882643761339acf06494ae299cb954d}\index{mass\_test.cpp@{mass\_test.cpp}!generateUniquePoints@{generateUniquePoints}}
+\index{generateUniquePoints@{generateUniquePoints}!mass\_test.cpp@{mass\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{generateUniquePoints()}{generateUniquePoints()}}
+{\footnotesize\ttfamily \label{mass__test_8cpp_a7882643761339acf06494ae299cb954d} 
+std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ generate\+Unique\+Points (\begin{DoxyParamCaption}\item[{int}]{count}{, }\item[{std\+::mt19937 \&}]{gen}{, }\item[{std\+::uniform\+\_\+int\+\_\+distribution$<$$>$ \&}]{dist}{}\end{DoxyParamCaption})}
+
+
+
+Генерирует уникальные точки 
+
+
+\begin{DoxyParams}{Parameters}
+{\em count} & Количество точек \\
+\hline
+{\em gen} & Генератор случайных чисел \\
+\hline
+{\em dist} & Распределение \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Вектор уникальных точек 
+\end{DoxyReturn}
+\Hypertarget{mass__test_8cpp_a1ef65a02c6b53722cfd07662e6b1935f}\index{mass\_test.cpp@{mass\_test.cpp}!pointsToString@{pointsToString}}
+\index{pointsToString@{pointsToString}!mass\_test.cpp@{mass\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{pointsToString()}{pointsToString()}}
+{\footnotesize\ttfamily \label{mass__test_8cpp_a1ef65a02c6b53722cfd07662e6b1935f} 
+std\+::string points\+To\+String (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \&}]{points}{}\end{DoxyParamCaption})}
+
+
+
+Конвертирует точки в строку 
+
+
+\begin{DoxyParams}{Parameters}
+{\em points} & Вектор точек \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Строковое представление 
+\end{DoxyReturn}
+\Hypertarget{mass__test_8cpp_a9fe71e0ebe9bf2f8b0a3baf62fcdeca1}\index{mass\_test.cpp@{mass\_test.cpp}!saveTestToFile@{saveTestToFile}}
+\index{saveTestToFile@{saveTestToFile}!mass\_test.cpp@{mass\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{saveTestToFile()}{saveTestToFile()}}
+{\footnotesize\ttfamily \label{mass__test_8cpp_a9fe71e0ebe9bf2f8b0a3baf62fcdeca1} 
+void save\+Test\+To\+File (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \&}]{points}{, }\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \&}]{hull}{}\end{DoxyParamCaption})}
+
+
+
+Сохраняет тест в файл 
+
+
+\begin{DoxyParams}{Parameters}
+{\em points} & Исходные точки \\
+\hline
+{\em hull} & Точки оболочки \\
+\hline
+\end{DoxyParams}
+\Hypertarget{mass__test_8cpp_a3be19f7708fe2c9131609693434eef95}\index{mass\_test.cpp@{mass\_test.cpp}!testClient@{testClient}}
+\index{testClient@{testClient}!mass\_test.cpp@{mass\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{testClient()}{testClient()}}
+{\footnotesize\ttfamily \label{mass__test_8cpp_a3be19f7708fe2c9131609693434eef95} 
+bool test\+Client (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \&}]{test\+Points}{, }\item[{int}]{client\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Выполняет тестовый запрос 
+
+
+\begin{DoxyParams}{Parameters}
+{\em test\+Points} & Точки для теста \\
+\hline
+{\em client\+Id} & ID клиента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Результат теста (true -\/ успех) 
+\end{DoxyReturn}

@@ -1,0 +1,66 @@
+\doxysection{convex\+\_\+hull.\+h}
+\hypertarget{convex__hull_8h_source}{}\label{convex__hull_8h_source}\index{4\_Term\_Task\_1/convex\_hull.h@{4\_Term\_Task\_1/convex\_hull.h}}
+\mbox{\hyperlink{convex__hull_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\ \#include\ <algorithm>}}
+\DoxyCodeLine{00008\ \ }
+\DoxyCodeLine{00012\ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_point}{Point}}\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_point_a8c779e11e694b20e0946105a9f5de842}{x}};\ }
+\DoxyCodeLine{00014\ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_point_a2e1b5fb2b2a83571f5c0bc0f66a73cf7}{y}};\ }
+\DoxyCodeLine{00015\ \ \};}
+\DoxyCodeLine{00016\ \ }
+\DoxyCodeLine{00024\ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{convex__hull_8h_a2d849cf421a6725597b574dc7497f8b3}{orientation}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point}{Point}}\&\ p,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point}{Point}}\&\ q,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point}{Point}}\&\ r)\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \textcolor{keywordtype}{int}\ val\ =\ (q.\mbox{\hyperlink{struct_point_a2e1b5fb2b2a83571f5c0bc0f66a73cf7}{y}}\ -\/\ p.\mbox{\hyperlink{struct_point_a2e1b5fb2b2a83571f5c0bc0f66a73cf7}{y}})\ *\ (r.\mbox{\hyperlink{struct_point_a8c779e11e694b20e0946105a9f5de842}{x}}\ -\/\ q.\mbox{\hyperlink{struct_point_a8c779e11e694b20e0946105a9f5de842}{x}})\ -\/\ (q.\mbox{\hyperlink{struct_point_a8c779e11e694b20e0946105a9f5de842}{x}}\ -\/\ p.\mbox{\hyperlink{struct_point_a8c779e11e694b20e0946105a9f5de842}{x}})\ *\ (r.\mbox{\hyperlink{struct_point_a2e1b5fb2b2a83571f5c0bc0f66a73cf7}{y}}\ -\/\ q.\mbox{\hyperlink{struct_point_a2e1b5fb2b2a83571f5c0bc0f66a73cf7}{y}});}
+\DoxyCodeLine{00026\ \ \ \ \ \ \textcolor{keywordflow}{return}\ (val\ ==\ 0)\ ?\ 0\ :\ ((val\ >\ 0)\ ?\ 1\ :\ 2);}
+\DoxyCodeLine{00027\ \ \}}
+\DoxyCodeLine{00028\ \ }
+\DoxyCodeLine{00035\ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{convex__hull_8h_a93a934f50091ceafec20017904b24ff4}{distanceSq}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point}{Point}}\&\ p1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point}{Point}}\&\ p2)\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \textcolor{keywordflow}{return}\ (p1.\mbox{\hyperlink{struct_point_a8c779e11e694b20e0946105a9f5de842}{x}}\ -\/\ p2.\mbox{\hyperlink{struct_point_a8c779e11e694b20e0946105a9f5de842}{x}})*(p1.\mbox{\hyperlink{struct_point_a8c779e11e694b20e0946105a9f5de842}{x}}\ -\/\ p2.\mbox{\hyperlink{struct_point_a8c779e11e694b20e0946105a9f5de842}{x}})\ +\ (p1.\mbox{\hyperlink{struct_point_a2e1b5fb2b2a83571f5c0bc0f66a73cf7}{y}}\ -\/\ p2.\mbox{\hyperlink{struct_point_a2e1b5fb2b2a83571f5c0bc0f66a73cf7}{y}})*(p1.\mbox{\hyperlink{struct_point_a2e1b5fb2b2a83571f5c0bc0f66a73cf7}{y}}\ -\/\ p2.\mbox{\hyperlink{struct_point_a2e1b5fb2b2a83571f5c0bc0f66a73cf7}{y}});}
+\DoxyCodeLine{00037\ \ \}}
+\DoxyCodeLine{00038\ \ }
+\DoxyCodeLine{00044\ \ \textcolor{keyword}{inline}\ std::vector<Point>\ \mbox{\hyperlink{convex__hull_8h_ae92f742e183ce60c481968acdf3cca5d}{convexHull}}(\textcolor{keyword}{const}\ std::vector<Point>\&\ points)\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \textcolor{keywordflow}{if}\ (points.size()\ <\ 3)\ \textcolor{keywordflow}{return}\ points;}
+\DoxyCodeLine{00046\ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \textcolor{comment}{//\ Создаем\ рабочую\ копию}}
+\DoxyCodeLine{00048\ \ \ \ \ \ std::vector<Point>\ working\_copy\ =\ points;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ n\ =\ working\_copy.size();}
+\DoxyCodeLine{00050\ \ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \textcolor{comment}{//\ Находим\ самую\ нижнюю\ левую\ точку}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ min\_idx\ =\ 0;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 1;\ i\ <\ n;\ i++)\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (working\_copy[i].y\ <\ working\_copy[min\_idx].y\ ||\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ (working\_copy[i].y\ ==\ working\_copy[min\_idx].y\ \&\&\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ working\_copy[i].x\ <\ working\_copy[min\_idx].x))\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ min\_idx\ =\ i;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \ std::swap(working\_copy[0],\ working\_copy[min\_idx]);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \mbox{\hyperlink{struct_point}{Point}}\ p0\ =\ working\_copy[0];}
+\DoxyCodeLine{00062\ \ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \textcolor{comment}{//\ Сортируем\ точки\ по\ полярному\ углу}}
+\DoxyCodeLine{00064\ \ \ \ \ \ std::sort(working\_copy.begin()\ +\ 1,\ working\_copy.end(),\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ [\&p0](\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point}{Point}}\&\ p1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point}{Point}}\&\ p2)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ int\ o\ =\ orientation(p0,\ p1,\ p2);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ (o\ ==\ 2)\ ||\ (o\ ==\ 0\ \&\&\ distanceSq(p0,\ p1)\ <\ distanceSq(p0,\ p2));}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00069\ \ \ \ \ \ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \textcolor{comment}{//\ Строим\ оболочку}}
+\DoxyCodeLine{00071\ \ \ \ \ \ std::vector<Point>\ hull;}
+\DoxyCodeLine{00072\ \ \ \ \ \ hull.push\_back(working\_copy[0]);}
+\DoxyCodeLine{00073\ \ \ \ \ \ hull.push\_back(working\_copy[1]);}
+\DoxyCodeLine{00074\ \ \ \ \ \ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 2;\ i\ <\ n;\ i++)\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (hull.size()\ >\ 1\ \&\&\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{convex__hull_8h_a2d849cf421a6725597b574dc7497f8b3}{orientation}}(hull[hull.size()-\/2],\ hull.back(),\ working\_copy[i])\ !=\ 2)\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ hull.pop\_back();}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ hull.push\_back(working\_copy[i]);}
+\DoxyCodeLine{00081\ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \ \ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \textcolor{keywordflow}{return}\ hull;}
+\DoxyCodeLine{00084\ \ \}}
+
+\end{DoxyCode}
