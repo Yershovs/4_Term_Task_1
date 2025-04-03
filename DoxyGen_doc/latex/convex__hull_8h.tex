@@ -1,0 +1,91 @@
+\doxysection{4\+\_\+\+Term\+\_\+\+Task\+\_\+1/convex\+\_\+hull.h File Reference}
+\hypertarget{convex__hull_8h}{}\label{convex__hull_8h}\index{4\_Term\_Task\_1/convex\_hull.h@{4\_Term\_Task\_1/convex\_hull.h}}
+
+
+Алгоритм построения выпуклой оболочки  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_point}{Point}}
+\begin{DoxyCompactList}\small\item\em Структура точки в 2D пространстве \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{convex__hull_8h_a2d849cf421a6725597b574dc7497f8b3}{orientation}} (const \mbox{\hyperlink{struct_point}{Point}} \&p, const \mbox{\hyperlink{struct_point}{Point}} \&q, const \mbox{\hyperlink{struct_point}{Point}} \&r)
+\begin{DoxyCompactList}\small\item\em Определяет ориентацию тройки точек \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{convex__hull_8h_a93a934f50091ceafec20017904b24ff4}{distance\+Sq}} (const \mbox{\hyperlink{struct_point}{Point}} \&p1, const \mbox{\hyperlink{struct_point}{Point}} \&p2)
+\begin{DoxyCompactList}\small\item\em Вычисляет квадрат расстояния между точками \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \mbox{\hyperlink{convex__hull_8h_ae92f742e183ce60c481968acdf3cca5d}{convex\+Hull}} (const std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \&points)
+\begin{DoxyCompactList}\small\item\em Находит выпуклую оболочку (не модифицирует входные данные) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Алгоритм построения выпуклой оболочки 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{convex__hull_8h_ae92f742e183ce60c481968acdf3cca5d}\index{convex\_hull.h@{convex\_hull.h}!convexHull@{convexHull}}
+\index{convexHull@{convexHull}!convex\_hull.h@{convex\_hull.h}}
+\doxysubsubsection{\texorpdfstring{convexHull()}{convexHull()}}
+{\footnotesize\ttfamily \label{convex__hull_8h_ae92f742e183ce60c481968acdf3cca5d} 
+std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ convex\+Hull (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \&}]{points}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Находит выпуклую оболочку (не модифицирует входные данные) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em points} & Входные точки (const ссылка) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Точки выпуклой оболочки 
+\end{DoxyReturn}
+\Hypertarget{convex__hull_8h_a93a934f50091ceafec20017904b24ff4}\index{convex\_hull.h@{convex\_hull.h}!distanceSq@{distanceSq}}
+\index{distanceSq@{distanceSq}!convex\_hull.h@{convex\_hull.h}}
+\doxysubsubsection{\texorpdfstring{distanceSq()}{distanceSq()}}
+{\footnotesize\ttfamily \label{convex__hull_8h_a93a934f50091ceafec20017904b24ff4} 
+int distance\+Sq (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_point}{Point}} \&}]{p1}{, }\item[{const \mbox{\hyperlink{struct_point}{Point}} \&}]{p2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Вычисляет квадрат расстояния между точками 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & Первая точка \\
+\hline
+{\em p2} & Вторая точка \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Квадрат расстояния 
+\end{DoxyReturn}
+\Hypertarget{convex__hull_8h_a2d849cf421a6725597b574dc7497f8b3}\index{convex\_hull.h@{convex\_hull.h}!orientation@{orientation}}
+\index{orientation@{orientation}!convex\_hull.h@{convex\_hull.h}}
+\doxysubsubsection{\texorpdfstring{orientation()}{orientation()}}
+{\footnotesize\ttfamily \label{convex__hull_8h_a2d849cf421a6725597b574dc7497f8b3} 
+int orientation (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_point}{Point}} \&}]{p}{, }\item[{const \mbox{\hyperlink{struct_point}{Point}} \&}]{q}{, }\item[{const \mbox{\hyperlink{struct_point}{Point}} \&}]{r}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Определяет ориентацию тройки точек 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Первая точка \\
+\hline
+{\em q} & Вторая точка \\
+\hline
+{\em r} & Третья точка \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 -\/ коллинеарны, 1 -\/ по часовой, 2 -\/ против часовой 
+\end{DoxyReturn}

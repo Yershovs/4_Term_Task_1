@@ -1,0 +1,72 @@
+\doxysection{4\+\_\+\+Term\+\_\+\+Task\+\_\+1 Directory Reference}
+\hypertarget{dir_2521bcd8763630a7ce76596b81fe7b4e}{}\label{dir_2521bcd8763630a7ce76596b81fe7b4e}\index{4\_Term\_Task\_1 Directory Reference@{4\_Term\_Task\_1 Directory Reference}}
+\doxysubsubsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file \mbox{\hyperlink{convex__hull_8h}{convex\+\_\+hull.\+h}}
+\begin{DoxyCompactList}\small\item\em Алгоритм построения выпуклой оболочки \end{DoxyCompactList}\item 
+file \mbox{\hyperlink{mass__test_8cpp}{mass\+\_\+test.\+cpp}}
+\begin{DoxyCompactList}\small\item\em Массовое тестирование сервера выпуклой оболочки \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\hypertarget{README.md_autotoc_md1}{}\doxysubsection{\texorpdfstring{Описание проекта}{Описание проекта}}\label{README.md_autotoc_md1}
+Это клиент-\/серверное приложение для вычисления выпуклой оболочки множества точек на плоскости. Система состоит из\+:
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Сервера}} -\/ принимает запросы от клиентов, вычисляет выпуклую оболочку и возвращает результат
+\item {\bfseries{Клиента}} -\/ отправляет точки на сервер и сравнивает результат с локальным вычислением
+\item {\bfseries{Массового тестера}} -\/ проверяет сервер на множестве случайных данных
+\item {\bfseries{Визуализатора}} -\/ создает графическое представление тестовых случаев
+\end{DoxyEnumerate}\hypertarget{README.md_autotoc_md2}{}\doxysubsection{\texorpdfstring{Требования}{Требования}}\label{README.md_autotoc_md2}
+
+\begin{DoxyItemize}
+\item Windows ОС
+\item Компилятор с поддержкой C++17
+\item Python 3.\+x (для визуализации)
+\item Библиотеки Python\+: matplotlib
+\item Библиотека Winsock2 (включена в Windows)
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md3}{}\doxysubsection{\texorpdfstring{Сборка и запуск}{Сборка и запуск}}\label{README.md_autotoc_md3}
+
+\begin{DoxyEnumerate}
+\item Скомпилируйте сервер и клиент\+: g++ server.\+cpp -\/o server -\/lws2\+\_\+32 g++ client.\+cpp -\/o client -\/lws2\+\_\+32 g++ \doxylink{mass__test_8cpp}{mass\+\_\+test.\+cpp} -\/o mass\+\_\+test -\/lws2\+\_\+32
+\item Запустите сервер\+: .\textbackslash{}server.exe
+\item В отдельном терминале запустите клиент\+: Введите точки в формате "{}x1,y1 x2,y2 ..."{} (например\+: "{}1,2 3,4 5,6"{})
+\item Для массового тестирования\+: .\textbackslash{}mass\+\_\+test.exe
+\item Для визуализации результатов тестов\+: python visualize.\+py
+\end{DoxyEnumerate}\hypertarget{README.md_autotoc_md4}{}\doxysubsection{\texorpdfstring{Структура проекта}{Структура проекта}}\label{README.md_autotoc_md4}
+
+\begin{DoxyItemize}
+\item {\ttfamily server.\+cpp} -\/ серверное приложение
+\item {\ttfamily client.\+cpp} -\/ клиентское приложение
+\item {\ttfamily \doxylink{mass__test_8cpp}{mass\+\_\+test.\+cpp}} -\/ массовый тестер сервера
+\item {\ttfamily \doxylink{convex__hull_8h}{convex\+\_\+hull.\+h}} -\/ алгоритм выпуклой оболочки
+\item {\ttfamily visualize.\+py} -\/ скрипт визуализации тестов
+\item {\ttfamily tests.\+log} -\/ файл с логами тестов (создается автоматически)
+\item {\ttfamily test\+\_\+case\+\_\+\texorpdfstring{$\ast$}{*}.png} -\/ изображения тестовых случаев (создаются автоматически)
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md5}{}\doxysubsection{\texorpdfstring{Особенности реализации}{Особенности реализации}}\label{README.md_autotoc_md5}
+
+\begin{DoxyItemize}
+\item Используется алгоритм Грэхема для построения выпуклой оболочки
+\item Клиент проверяет соответствие результатов сервера локальным вычислениям
+\item Массовый тест генерирует 100 клиентов с 1000 уникальных точек каждый
+\item Визуализатор создает PNG-\/изображения для каждого тестового случая
+\item Логирование всех тестовых случаев в файл tests.\+log
+\end{DoxyItemize}\hypertarget{README.md_autotoc_md6}{}\doxysubsection{\texorpdfstring{Пример работы}{Пример работы}}\label{README.md_autotoc_md6}
+
+\begin{DoxyEnumerate}
+\item Запустите сервер\+: Server listening on port 8080
+\item Запустите клиент и введите точки\+: Enter points in format \textquotesingle{}x1,y1 x2,y2 ...\textquotesingle{}\+: 0,0 1,1 2,2 1,0 0,1
+\item Получите результат\+: Results match! Convex hull points\+: 0,0 2,2 1,0 0,1
+\item Для тестирования производительности\+: \textbackslash{}mass\+\_\+test.exe Tests completed\+: 100/100 (100\%)
+\item Для визуализации\+: python visualize.\+py Found 100 test cases Visualized test case 1 ... All visualizations saved as PNG files
+\end{DoxyEnumerate}\hypertarget{README.md_autotoc_md7}{}\doxysubsection{\texorpdfstring{Технические детали}{Технические детали}}\label{README.md_autotoc_md7}
+
+\begin{DoxyItemize}
+\item Порт\+: 8080
+\item Максимальное количество точек в тесте\+: 1000
+\item Диапазон координат\+: \mbox{[}-\/1000, 1000\mbox{]}
+\item Начальный размер буфера\+: 1024 байт (размер буфера меняется в процессе работы программы)
+\item Максимальная очередь подключений\+: 1000 
+\end{DoxyItemize}
